@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thiago Martino</title>
+    <meta name="description" content="Site pessoal de Thiago Martino, com o nome escrito 10 vezes." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">Site pessoal</p>
+      <h1>Thiago Martino</h1>
+      <p class="subtitle">
+        Meu nome está escrito <strong>10 vezes</strong> na lista numerada abaixo, de 01 a 10.
+      </p>
+      <p class="badges">
+        <span class="badge">Cloudflare Workers</span>
+        <span class="badge">Nvidia LLM API</span>
+        <span class="badge">Supabase</span>
+      </p>
+    </header>
+
+    <main>
+      <section class="card" aria-labelledby="nomes-titulo">
+        <h2 id="nomes-titulo">Meu nome, 10 vezes</h2>
+        <ol id="lista-nomes" class="name-list">
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+          <li>Thiago Martino</li>
+        </ol>
+        <p class="hint" id="nomes-origem">Lista fixa no HTML; o Worker confirma pela rota /api/name.</p>
+      </section>
+
+      <section class="card" aria-labelledby="chat-titulo">
+        <h2 id="chat-titulo">Assistente (Nvidia LLM API)</h2>
+        <p class="hint">
+          Pergunte algo. A resposta vem da rota <code>/api/chat</code>, que chama a API de LLM da
+          Nvidia a partir do Worker — a chave nunca aparece no navegador.
+        </p>
+        <form id="chat-form" class="stack">
+          <label class="sr-only" for="chat-prompt">Sua pergunta</label>
+          <textarea
+            id="chat-prompt"
+            name="prompt"
+            rows="3"
+            maxlength="2000"
+            placeholder="Ex.: escreva uma frase curta sobre o meu nome."
+            required
+          ></textarea>
+          <button type="submit">Perguntar</button>
+        </form>
+        <output id="chat-resposta" class="output" aria-live="polite"></output>
+      </section>
+
+      <section class="card" aria-labelledby="mural-titulo">
+        <h2 id="mural-titulo">Mural (Supabase)</h2>
+        <p class="hint">
+          As mensagens ficam na tabela <code>messages</code> do Supabase, lidas e gravadas pelo
+          Worker em <code>/api/messages</code>.
+        </p>
+        <form id="mural-form" class="stack">
+          <label class="sr-only" for="mural-autor">Seu nome</label>
+          <input id="mural-autor" name="author" type="text" maxlength="80" placeholder="Seu nome (opcional)" />
+          <label class="sr-only" for="mural-conteudo">Sua mensagem</label>
+          <textarea
+            id="mural-conteudo"
+            name="content"
+            rows="3"
+            maxlength="1000"
+            placeholder="Deixe uma mensagem..."
+            required
+          ></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+        <output id="mural-aviso" class="output" aria-live="polite"></output>
+        <ul id="mural-lista" class="message-list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="status-titulo">
+        <h2 id="status-titulo">Estado das integrações</h2>
+        <ul class="status-list">
+          <li>
+            <span class="dot" id="status-nvidia-dot" data-state="unknown"></span>
+            <span>Nvidia LLM API</span>
+            <span class="status-text" id="status-nvidia">verificando...</span>
+          </li>
+          <li>
+            <span class="dot" id="status-supabase-dot" data-state="unknown"></span>
+            <span>Supabase</span>
+            <span class="status-text" id="status-supabase">verificando...</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Publicado na Cloudflare &middot; Workers, Nvidia LLM API e Supabase</p>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

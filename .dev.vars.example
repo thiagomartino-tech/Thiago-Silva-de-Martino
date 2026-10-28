@@ -1,0 +1,9 @@
+# Copie para .dev.vars (que fica fora do git) e preencha para rodar localmente.
+# Em producao, use: npx wrangler secret put <NOME>
+
+# Chave da API de LLM da Nvidia (https://build.nvidia.com -> "Get API Key")
+NVIDIA_API_KEY=""
+
+# Supabase: URL do projeto + chave de servico (Project Settings -> API)
+SUPABASE_URL=""
+SUPABASE_SERVICE_ROLE_KEY=""

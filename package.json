@@ -1,0 +1,15 @@
+{
+  "name": "thiago-martino-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Site de Thiago Martino em Cloudflare Workers, preparado para a API de LLM da Nvidia e o Supabase.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "4.154.0"
+  }
+}

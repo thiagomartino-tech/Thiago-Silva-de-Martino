@@ -1,0 +1,31 @@
+name = "thiago-martino-site"
+main = "src/worker.js"
+compatibility_date = "2025-10-01"
+
+# Arquivos estáticos em ./public sao servidos direto pela Cloudflare.
+# Qualquer rota que nao exista como arquivo cai no Worker (src/worker.js),
+# que responde as rotas /api/*.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
+
+[observability]
+enabled = true
+
+# ---------------------------------------------------------------------------
+# Variaveis publicas (nao secretas). Podem ficar no repositorio.
+# ---------------------------------------------------------------------------
+[vars]
+NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
+NVIDIA_MODEL = "meta/llama-3.3-70b-instruct"
+# Preencha com a URL do seu projeto Supabase, ex.: https://xxxxxxxx.supabase.co
+SUPABASE_URL = ""
+
+# ---------------------------------------------------------------------------
+# Segredos (NUNCA no repositorio). Configure com:
+#   npx wrangler secret put NVIDIA_API_KEY
+#   npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+# Em desenvolvimento local, use o arquivo .dev.vars (veja .dev.vars.example).
+# ---------------------------------------------------------------------------
