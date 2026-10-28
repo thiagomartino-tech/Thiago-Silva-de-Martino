@@ -1,5 +1,5 @@
 {
-  "name": "thiago-martino-site",
+  "name": "thiago-silva-de-martino",
   "version": "0.1.0",
   "private": true,
   "description": "Site de Thiago Martino em Cloudflare Workers, preparado para a API de LLM da Nvidia e o Supabase.",
